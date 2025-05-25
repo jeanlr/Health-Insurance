@@ -1277,14 +1277,14 @@ def calculate_metrics_models_regression(nm_modelo, model, X_train, y_train, X_te
     mse_train = mean_squared_error(y_train, y_train_pred)
     rmse_train = np.sqrt(mse_train)
     r2_train = r2_score(y_train, y_train_pred)
-    mape_train = np.mean(np.abs((y_train - y_train_pred) / y_train)) * 100
+
 
     # Calculando métricas para o conjunto de teste
     r2_test = r2_score(y_test, y_test_pred)
     mae_test = mean_absolute_error(y_test, y_test_pred)
     mse_test = mean_squared_error(y_test, y_test_pred)
     rmse_test = np.sqrt(mse_test)
-    mape_test = np.mean(np.abs((y_test - y_test_pred) / y_test)) * 100
+
 
     # Criando o DataFrame com as métricas calculadas
     metrics_df = pd.DataFrame({
@@ -1293,8 +1293,7 @@ def calculate_metrics_models_regression(nm_modelo, model, X_train, y_train, X_te
         'R2': [r2_train, r2_test],
         'MAE': [mae_train, mae_test],
         'MSE': [mse_train, mse_test],
-        'RMSE': [rmse_train, rmse_test],
-        'MAPE (%)': [mape_train, mape_test]
+        'RMSE': [rmse_train, rmse_test]
     })
 
     return metrics_df
